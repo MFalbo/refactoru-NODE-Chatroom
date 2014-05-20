@@ -10,6 +10,9 @@ block content
 		.row
 			textarea#message-input.form-control.col-xs-12(type="text", placeholder="send a message")
 
+		form#user-info
+			input#user-name(type='text' name="username" placeholder="Name")
+			input(type="submit")
 	//- add Handlebars templates
 	include templates.html
 

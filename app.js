@@ -40,10 +40,15 @@ var users = {}
 
 //If the client just connected
 io.sockets.on('connection', function(socket) {
-	// socket.emit('news', 'hello world');
 	socket.on('message', function(message){
 		io.sockets.emit('message', message);
 		console.log('socketID', socket.id);
+	});
+	socket.on('nickname', function(name){
+		socket.set('nickname', name, function(){
+			// console.log(socket);
+			socket.emit('ready', name);
+		})	;
 	});
 });
 

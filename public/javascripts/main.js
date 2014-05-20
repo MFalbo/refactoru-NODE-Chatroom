@@ -27,4 +27,17 @@ $(function(){
 		var messageLine = $('<div> USERNAME: ' + message + '</div>');
 		$('#room').append(messageLine);
 	})
+	
+
+	$("#user-info").submit(function(){
+		var userName = $("#user-name").val();
+		socket.emit('nickname', userName);
+		return false;
+	});
+	socket.on('ready', function(name){
+		$('#users').append('<div>' + name + '</div>');
+		$('#room').append('<div>User ' + name + ' has entered the room</div>');
+	});
+
+
 });
